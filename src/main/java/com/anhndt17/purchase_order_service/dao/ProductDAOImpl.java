@@ -28,7 +28,7 @@ public class ProductDAOImpl implements ProductDAO{
     @Override
     @Transactional
     public void updateProductAfterSales(String productCode, Double quantity) {
-        String jpql = "UPDATE Product p SET p.quantityInStock = p.quantityInStock + :quantity " +
+        String jpql = "UPDATE Product p SET p.quantityInStock = p.quantityInStock - :quantity " +
                 "WHERE p.productCode = :productCode";
         Query query = entityManager.createQuery(jpql);
         query.setParameter("quantity", quantity);
